@@ -30,11 +30,21 @@ public class NameServlet extends HttpServlet {
         } else {
             resp.getWriter().println("Name '" + newName + "' already exists.");
             resp.setStatus(HttpServletResponse.SC_CONFLICT);
+           resp.sendError(HttpServletResponse.SC_CONFLICT, "Error 409");
+            resp.getWriter().println(resp.getStatus());
         }
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
+        resp.setContentType("text/plain");
+
+        String newName = req.getPathInfo().substring(1);
+        if (names.getNames().remove(newName)) {
+            resp.getWriter().println("Name '" + newName + "' has been deleted.");
+        } else {
+            resp.getWriter().println("Name '" + newName + "' already deletes.");
+            resp.setStatus(HttpServletResponse.SC_CONFLICT);
+        }
     }
 }

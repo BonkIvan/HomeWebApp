@@ -14,6 +14,11 @@
     <servlet-name>TimeServlet</servlet-name>
     <servlet-class>by.homeWebApp.TimeServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>TimeServlet</servlet-name>
+    <servlet-class>by.homeWebApp.TimeServlet</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>HelloWorldServlet</servlet-name>
