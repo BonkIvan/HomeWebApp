@@ -21,14 +21,25 @@ public class NameHashList {
         this.names = names;
     }
 
-    public void init(){
+    public void init() {
         names.add("Masha");
         names.add("Sasha");
         names.add("Ivan");
 
     }
 
-
+    public boolean isName(String name) {
+        boolean x = false;
+        for (String isName : names)
+        {
+            if (isName.equals(name))
+            {
+                x = true;
+                break;
+            }
+        }
+        return x;
+    }
 
 
 }
