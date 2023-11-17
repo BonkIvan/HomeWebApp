@@ -28,9 +28,9 @@ public class NameServlet extends HttpServlet {
         if (names.getNames().add(newName)) {
             resp.getWriter().println("Name '" + newName + "' has been added.");
         } else {
-            resp.getWriter().println("Name '" + newName + "' already exists.");
+          //  resp.getWriter().println("Name '" + newName + "' already exists.");
             resp.setStatus(HttpServletResponse.SC_CONFLICT);
-           resp.sendError(HttpServletResponse.SC_CONFLICT, "Error 409");
+           resp.sendError(HttpServletResponse.SC_CONFLICT, "Error blgadfadf 409");
             resp.getWriter().println(resp.getStatus());
         }
     }
