@@ -18,46 +18,31 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        String path = "/Login.html";
+        String path = "/html/Login.html";
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
 
-       // RequestDispatcher dispatcher = req.getRequestDispatcher("");
-       // dispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
-        String path = "/Login.html";
-        String path1 = "/userPage.html";
+        String path = "/html/Login.html";
+        String path1 = "/html/userPage.html";
         ServletContext servletContext = getServletContext();
         final String username = req.getParameter("username");
         final String password = req.getParameter("password");
 
         if(users.isUser(username, password)){
-            resp.sendRedirect("/userPages");
-            /*RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/userPages");
-            requestDispatcher.forward(req, resp);*/
+            resp.sendRedirect(path1);
+
         }else{
             RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
             requestDispatcher.forward(req, resp);
         }
 
 
-        /*String newName = req.getPathInfo().substring(1);
-        ServletContext servletContext = getServletContext();
-        if (names.isName(newName)) {
-            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/userPages");
-            requestDispatcher.forward(req, resp);
-           // resp.getWriter().println("Name '" + newName + "' has been added.");
 
-        } else {
-          resp.getWriter().println("Name '" + newName + "' name is not found.");
-            resp.setStatus(HttpServletResponse.SC_CONFLICT);
-            resp.sendError(HttpServletResponse.SC_CONFLICT, "Error login 409");
-            resp.getWriter().println(resp.getStatus());
-        }*/
     }
 }
