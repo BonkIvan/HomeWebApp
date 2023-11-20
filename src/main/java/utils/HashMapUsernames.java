@@ -20,6 +20,9 @@ public class HashMapUsernames {
     public void setUsers(HashMap<String, String> users) {
         this.users = users;
     }
+    public void setUser(String user, String password) {
+       users.put(user, password);
+    }
 
 
     public boolean isUser(String user, String  password) {

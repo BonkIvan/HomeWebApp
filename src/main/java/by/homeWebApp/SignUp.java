@@ -7,46 +7,41 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import utils.HashMapUsernames;
-import utils.NameHashList;
 
 import java.io.IOException;
 
-@WebServlet(name = "Login", urlPatterns = "/login")
-public class Login extends HttpServlet {
-  HashMapUsernames users = new HashMapUsernames();
-  String path = "/html/Login.html";
-  String path1 = "/html/userPage.html";
-  String path2 = "/newUserPage";
+@WebServlet(name = "SignUp", urlPatterns = "/sign_up")
+public class SignUp extends HttpServlet {
+    String pathLogin = "/html/Login.html";
+    String pathSignUp = "/html/signUp.html";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         ServletContext servletContext = getServletContext();
-        servletContext.setAttribute("users", users);
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(pathSignUp);
         requestDispatcher.forward(req, resp);
 
     }
 
-
-    //Логирование пользователя
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         ServletContext servletContext = getServletContext();
+        HashMapUsernames users = (HashMapUsernames) servletContext.getAttribute("users");
         final String username = req.getParameter("username");
         final String password = req.getParameter("password");
-
-
-        if(users.isUser(username, password)){
-            resp.sendRedirect(path1);
-        }else{
-            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
+        if (!users.isUser(username, password)){
+            users.getUsers().put(username, password);
+            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(pathLogin);
             requestDispatcher.forward(req, resp);
+
+        }else{
+            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(pathSignUp);
+            requestDispatcher.forward(req, resp);
+
         }
 
     }
-
-
 }

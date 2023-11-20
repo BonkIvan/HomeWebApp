@@ -21,6 +21,10 @@ public class NameHashList {
         this.names = names;
     }
 
+    public boolean SetName(String name){
+        return names.add(name);
+    }
+
     public void init() {
         names.add("Masha");
         names.add("Sasha");

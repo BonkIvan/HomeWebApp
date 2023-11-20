@@ -18,7 +18,7 @@ public class TimeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //resp.setContentType("text/html");
+        resp.setContentType("text/html");
 
         //Получаем временную зону из запроса
         String timeZoneParam = req.getParameter("zone");
@@ -35,8 +35,6 @@ public class TimeServlet extends HttpServlet {
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         dateFormat.setTimeZone(timeZone);
     String formattedDate = dateFormat.format(currentDate);
-
-
         resp.getWriter().println(formattedDate);
     }
 }

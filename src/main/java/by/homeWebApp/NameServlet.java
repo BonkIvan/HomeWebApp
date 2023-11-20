@@ -23,12 +23,10 @@ public class NameServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
-
         String newName = req.getPathInfo().substring(1);
-        if (names.getNames().add(newName)) {
+        if (names.SetName(newName)) {
             resp.getWriter().println("Name '" + newName + "' has been added.");
         } else {
-          //  resp.getWriter().println("Name '" + newName + "' already exists.");
             resp.setStatus(HttpServletResponse.SC_CONFLICT);
            resp.sendError(HttpServletResponse.SC_CONFLICT, "Error blgadfadf 409");
             resp.getWriter().println(resp.getStatus());
@@ -38,7 +36,6 @@ public class NameServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
-
         String newName = req.getPathInfo().substring(1);
         if (names.getNames().remove(newName)) {
             resp.getWriter().println("Name '" + newName + "' has been deleted.");

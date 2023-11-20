@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="utils.HashMapUsernames" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +26,19 @@
 
     <div class="user-info">
         <!-- Здесь может быть информация о пользователе -->
-        <p >Имя пишущего этот код: <%= request.getAttribute("userName") %> </p>
+        <p >Имя пишущего этот код: <%= request.getAttribute("name")%> </p>
+        <%--<%! public String getName() {
+            HttpSession session = request.getSession();
+
+            return session.getAttributeNames().toString();
+        }%>--%>
+
+
+
+
     </div>
 
-    <button class="logout-button" onclick="location.href='LogoutServlet'">Logout</button>
+    <button class="logout-button" onclick="/login">Logout</button>
 </div>
 
 </body>

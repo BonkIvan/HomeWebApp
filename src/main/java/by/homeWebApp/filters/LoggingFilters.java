@@ -1,29 +1,27 @@
-/*
 package by.homeWebApp.filters;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-@WebServlet(urlPatterns = "/*")
-public class Filters implements Filter {
-
+@WebFilter(filterName = "LoggingFilters", urlPatterns = "/login/*")
+public class LoggingFilters implements Filter {
+    private ServletContext context;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        Filter.super.init(filterConfig);
+        this.context = filterConfig.getServletContext();
+        this.context.log("LoggingFilters initialized");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
-
-
-
+        HttpSession session = httpRequest.getSession();
+        filterChain.doFilter(servletRequest, servletResponse);
 
     }
 
@@ -33,4 +31,3 @@ public class Filters implements Filter {
         Filter.super.destroy();
     }
 }
-*/

@@ -20,6 +20,7 @@ public class UserPage extends HttpServlet {
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/userPage.html");
         requestDispatcher.forward(req, resp);
 
+
        // resp.getWriter().println("Hello, it's me and blablablabla");
     }
 
