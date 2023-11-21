@@ -2,18 +2,20 @@ package utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class HashMapUsernames {
+public class MapUsernames {
 
-   private HashMap<String, String> users = new HashMap<>();
 
-    public HashMapUsernames() {
+   private  Map<String, String> users =new ConcurrentHashMap<>();
+
+    public MapUsernames() {
         users.put("Masha", "123");
         users.put("Sasha", "456");
         users.put("Vanya", "789");
     }
 
-    public HashMap<String, String> getUsers() {
+    public Map<String, String> getUsers() {
         return users;
     }
 

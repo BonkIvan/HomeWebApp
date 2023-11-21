@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import utils.HashMapUsernames;
+import utils.MapUsernames;
 
 import java.io.IOException;
 
@@ -29,7 +29,7 @@ public class SignUp extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         ServletContext servletContext = getServletContext();
-        HashMapUsernames users = (HashMapUsernames) servletContext.getAttribute("users");
+        MapUsernames users = (MapUsernames) servletContext.getAttribute("users");
         final String username = req.getParameter("username");
         final String password = req.getParameter("password");
         if (!users.isUser(username, password)){

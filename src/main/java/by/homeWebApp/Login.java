@@ -8,14 +8,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import utils.HashMapUsernames;
-import utils.NameHashList;
+import utils.MapUsernames;
 
 import java.io.IOException;
 
 @WebServlet(name = "Login", urlPatterns = "/login")
 public class Login extends HttpServlet {
-  HashMapUsernames users = new HashMapUsernames();
+  MapUsernames users = new MapUsernames();
   String path = "/html/Login.html";
   String path1 = "/html/userPage.html";
   String path2 = "/newUserPage";
@@ -37,9 +36,11 @@ public class Login extends HttpServlet {
         ServletContext servletContext = getServletContext();
         final String username = req.getParameter("username");
         final String password = req.getParameter("password");
-
+        HttpServletRequest httpRequest = (HttpServletRequest) req;
 
         if(users.isUser(username, password)){
+            HttpSession session = httpRequest.getSession();
+            session.setAttribute("name", username);
             resp.sendRedirect(path1);
         }else{
             RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
