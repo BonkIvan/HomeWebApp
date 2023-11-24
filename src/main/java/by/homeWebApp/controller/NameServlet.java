@@ -1,14 +1,17 @@
-package by.homeWebApp;
+package by.homeWebApp.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import utils.NameHashList;
+import by.homeWebApp.model.NameHashList;
 
 import java.io.IOException;
-@WebServlet(name = "NameServlet", urlPatterns = "/names/*")
+
+import static by.homeWebApp.constant.MappingConstants.NAMES_SERVLET;
+
+@WebServlet(name = "NameServlet", urlPatterns = NAMES_SERVLET)
 public class NameServlet extends HttpServlet {
     NameHashList names = new NameHashList();
 

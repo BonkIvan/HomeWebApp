@@ -1,5 +1,8 @@
-package by.homeWebApp;
+package by.homeWebApp.controller;
 
+import by.homeWebApp.constant.KeyValuesEnum;
+import by.homeWebApp.constant.MappingConstants;
+import by.homeWebApp.model.MapUsernames;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -8,14 +11,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import utils.MapUsernames;
-
 import java.io.IOException;
+import static by.homeWebApp.constant.MappingConstants.LOGIN_PAGE_HTML;
+import static by.homeWebApp.constant.MappingConstants.USER_PAGE_HTML;
 
-@WebServlet(name = "Login", urlPatterns = "/login")
+@WebServlet(name = "Login", urlPatterns = MappingConstants.LOGGING_SERVLET)
 public class Login extends HttpServlet {
   MapUsernames users = new MapUsernames();
-  String path = "/html/Login.html";
+
   String path1 = "/html/userPage.html";
   String path2 = "/newUserPage";
     @Override
@@ -23,7 +26,7 @@ public class Login extends HttpServlet {
         resp.setContentType("text/html");
         ServletContext servletContext = getServletContext();
         servletContext.setAttribute("users", users);
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(LOGIN_PAGE_HTML);
         requestDispatcher.forward(req, resp);
 
     }
@@ -34,16 +37,16 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         ServletContext servletContext = getServletContext();
-        final String username = req.getParameter("username");
-        final String password = req.getParameter("password");
+        final String username = req.getParameter(KeyValuesEnum.USER_NAME.getParamName());
+        final String password = req.getParameter(KeyValuesEnum.USER_PASSWORD.getParamName());
         HttpServletRequest httpRequest = (HttpServletRequest) req;
 
         if(users.isUser(username, password)){
             HttpSession session = httpRequest.getSession();
-            session.setAttribute("name", username);
-            resp.sendRedirect(path1);
+            session.setAttribute(KeyValuesEnum.USER_NAME.getParamName(), username);
+            resp.sendRedirect(USER_PAGE_HTML);
         }else{
-            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
+            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(LOGIN_PAGE_HTML);
             requestDispatcher.forward(req, resp);
         }
 

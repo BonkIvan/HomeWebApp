@@ -1,4 +1,4 @@
-package utils;
+package by.homeWebApp.model;
 
 import java.util.HashSet;
 import java.util.Set;

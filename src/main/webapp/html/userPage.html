@@ -1,18 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Домашняя страница</title>
     <link rel="stylesheet" href="../CSS/bootstrap.rtl.min.css">
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <title>Adaptive Page</title>
+
 </head>
-<body>
+<body >
 <div class="container mt-5">
     <!-- Изображение пользователя и информация о пользователе в одной строке -->
     <div class="row">
         <div class="col-md-4">
-            <img src="user-image.jpg" alt="User Image" class="img-fluid rounded-circle">
+            <img src="../images/images.jpeg" alt="User Image" class="img-fluid rounded-circle">
         </div>
         <div class="col-md-8">
             <h2>User Information</h2>
@@ -27,44 +28,53 @@
         <div class="col-md-12">
             <h3>Status</h3>
             <p>User is currently online.</p>
+            <button type="button" class="btn btn-success" onclick="location.href='/newUserPage'" >Success</button>
         </div>
     </div>
 
-    <!-- Карточки с заданиями или описаниями навыков в одной строке, максимум по 2 в ряд -->
+    <!-- Карточки с заданиями или описаниями навыков в одной строке, максимум по 2 в ряд row-cols-1 -->
     <div class="container text-center">
-    <div class="row row-cols-1 row-cols-lg-2 g-1 g-lg-3">
-        <div class="col">
-            <div class="card">
+    <div class="row  row-cols-lg-2 row-cols-lg-3 g-2 g-lg-3">
+        <div class="p-2 g-col-6">
+            <div class="card" style="width: 18rem; ">
+                <img src="../images/lazly_cat.jpeg" class="card-img-top" alt="..." height = "400">
                 <div class="card-body">
-                    <h5 class="card-title">Task 1</h5>
-                    <p class="card-text">Description of Task 1.</p>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
 
-        <div class="col">
-            <div class="card">
+        <div class="p-2 g-col-6">
+            <div class="card" style="width: 18rem;">
+                <img src="../images/sarcasm_black_cat.jpeg" class="card-img-top" alt="..." height = "400">
                 <div class="card-body">
-                    <h5 class="card-title">Task 2</h5>
-                    <p class="card-text">Description of Task 2.</p>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
 
-        <div class="col">
-            <div class="card">
+        <div class="p-2 g-col-6">
+            <div class="card" style="width: 18rem;" >
+                <img src="../images/yang_cat.jpeg" class="card-img-top" alt="..." height = "400" >
                 <div class="card-body">
-                    <h5 class="card-title">Task 3</h5>
-                    <p class="card-text">Description of Task 3.</p>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
 
-        <div class="col">
-            <div class="card">
+        <div class="p-2 g-col-6">
+            <div class="card" style="width: 18rem;">
+                <img src="../images/red_cat.jpeg" class="card-img-top" alt="..." height = "400">
                 <div class="card-body">
-                    <h5 class="card-title">Task 4</h5>
-                    <p class="card-text">Description of Task 4.</p>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
@@ -106,6 +116,6 @@
     </div>
 </div>
 
-
+<script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

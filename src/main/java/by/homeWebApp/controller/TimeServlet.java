@@ -1,27 +1,36 @@
-package by.homeWebApp;
+package by.homeWebApp.controller;
 
+import by.homeWebApp.constant.KeyValuesEnum;
+import by.homeWebApp.constant.MappingConstants;
+import by.homeWebApp.service.TimeService;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-@WebServlet(name = "TimeServlet", urlPatterns = "/time")
+@WebServlet(name = "TimeServlet", urlPatterns = MappingConstants.TIME_SERVLET)
 public class TimeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         resp.setContentType("text/html");
-
         //Получаем временную зону из запроса
-        String timeZoneParam = req.getParameter("zone");
+        String timeZoneParam = req.getParameter(KeyValuesEnum.TIME_ZONE.getParamName());
+        private TimeService service;
+       /* private ZonedDateProvider zonedDateProvider;
+
+        @Override
+        public void init(ServletConfig config) {
+            service = new TimeService();
+            zonedDateProvider = new ZonedDateProvider();*/
+        }
+
+
 
         // Определение временной зоны
         TimeZone timeZone;

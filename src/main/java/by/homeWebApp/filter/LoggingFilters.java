@@ -1,4 +1,4 @@
-package by.homeWebApp.filters;
+package by.homeWebApp.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;

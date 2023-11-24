@@ -1,5 +1,6 @@
-package by.homeWebApp;
+package by.homeWebApp.controller;
 
+import by.homeWebApp.constant.MappingConstants;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -10,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "UserPage", urlPatterns = "/userPages")
+@WebServlet(name = "UserPage", urlPatterns = MappingConstants.USER_PAGE_SERVLET)
 public class UserPage extends HttpServlet {
 
     @Override
