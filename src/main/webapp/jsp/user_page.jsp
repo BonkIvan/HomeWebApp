@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Домашняя страница</title>
-    <link rel="stylesheet" href="../CSS/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
 
 </head>
 <body >
