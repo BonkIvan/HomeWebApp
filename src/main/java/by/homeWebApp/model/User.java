@@ -3,6 +3,9 @@ package by.homeWebApp.model;
 import java.util.Date;
 
 public class User {
+    private String username;
+    private String password;
+
     private  String firstName;
     private  String lastName;
     private  String middleName;
@@ -13,7 +16,49 @@ public class User {
     private  String address;
     private  int phoneNumb;
 
-    public User(String firstName, String lastName, String middleName, String gender, Date birthday, String email, String address, int phoneNumb) {
+    public User(String username, String password, String firstName,
+                String lastName, String middleName, String gender,
+                Date birthday, String email, String address, int phoneNumb) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.email = email;
+        this.address = address;
+        this.phoneNumb = phoneNumb;
+    }
+
+    public User (String username, String password, String firstName,
+                 String lastName, String gender,
+                 Date birthday, int phoneNumb){
+        this(username, password, firstName, lastName, "unspecified", gender, birthday, "unspecified", "unspecified", phoneNumb);
+    }
+
+    public User (String username, String password, String firstName,
+                 String lastName, String gender,
+                 Date birthday, String email, String address, int phoneNumb){
+        this(username, password, firstName, lastName, "unspecified", gender, birthday, email, address, phoneNumb);
+    }
+
+    public User (String username, String password, String firstName,
+                 String lastName, String middleName, String gender,
+                 Date birthday,  String address, int phoneNumb){
+        this(username,password,firstName,lastName, middleName, gender, birthday, "unspecified", address, phoneNumb);
+    }
+
+ /*   public User(String username, String password, String firstName,
+                String lastName, String middleName, String gender,
+                Date birthday, String email, int phoneNumb){
+        this(username, password, firstName, lastName, middleName, gender, birthday, email, "unspecified", phoneNumb);
+    } */
+
+
+
+
+    /*public User(String firstName, String lastName, String middleName, String gender, Date birthday, String email, String address, int phoneNumb) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
@@ -98,5 +143,5 @@ public class User {
 
     public void setPhoneNumb(int phoneNumb) {
         this.phoneNumb = phoneNumb;
-    }
+    }*/
 }
